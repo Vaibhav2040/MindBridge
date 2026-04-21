@@ -3,9 +3,9 @@
 <img src="https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Scikit--Learn-1.3-orange?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
 <img src="https://img.shields.io/badge/Streamlit-1.56-red?style=for-the-badge&logo=streamlit&logoColor=white"/>
-<img src="https://img.shields.io/badge/Accuracy-75.04%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/F1%20Score-74.93%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/AUC--ROC-0.9473-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Accuracy-73.55%25-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/F1%20Score-73.45%25-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/AUC--ROC-0.9365-brightgreen?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
 
 ---
@@ -33,27 +33,41 @@
 
 ### Model Comparison
 
-| Model | Accuracy | Weighted F1 | AUC-ROC |
-|-------|----------|-------------|---------|
-| Naive Bayes | 69.51% | 68.98% | 0.9264 |
-| Random Forest | 70.25% | 68.26% | 0.9332 |
-| Linear SVM | 74.06% | 73.71% | 0.9335 |
-| **Logistic Regression (ours)** | **75.04%** | **74.93%** | **0.9473** |
+| Model | Accuracy | Weighted F1 | Macro F1 |
+|-------|----------|-------------|----------|
+| Naive Bayes | 67.78% | 67.14% | 55.67% |
+| Random Forest | 69.08% | 66.91% | 52.99% |
+| Linear SVM | 72.61% | 72.25% | 66.66% |
+| **Logistic Regression (ours)** | **73.55%** | **73.45%** | **68.04%** |
+
+### Per-Class Performance (Tuned Logistic Regression)
+
+| Class | Precision | Recall | F1 Score | Support |
+|-------|-----------|--------|----------|---------|
+| Normal | 0.88 | 0.91 | 0.89 | 2,406 |
+| Anxiety | 0.74 | 0.83 | 0.78 | 544 |
+| Bipolar | 0.70 | 0.77 | 0.73 | 375 |
+| Suicidal | 0.65 | 0.70 | 0.68 | 1,596 |
+| Depression | 0.75 | 0.57 | 0.65 | 2,264 |
+| Personality Disorder | 0.46 | 0.57 | 0.51 | 134 |
+| Stress | 0.40 | 0.62 | 0.49 | 345 |
 
 ### Ablation Study — TF-IDF Configuration
 
-| Configuration | Weighted F1 |
-|--------------|-------------|
-| Unigrams only | 0.7381 |
-| Unigrams + Bigrams | 0.7433 |
-| + Sublinear TF scaling | 0.7471 |
-| + Vocabulary 20k | **0.7471** |
+| Configuration | Weighted F1 | Macro F1 |
+|--------------|-------------|----------|
+| Unigrams only | 0.7147 | 0.6439 |
+| Unigrams + Bigrams | 0.7292 | 0.6664 |
+| + Sublinear TF scaling | 0.7327 | 0.6714 |
+| Vocab 10k | 0.7252 | 0.6603 |
+| **Final config (20k)** | **0.7327** | **0.6714** |
 
 ### Key Findings
 - Logistic Regression achieves the best performance across all metrics
-- Mean AUC-ROC of **0.9473** indicates excellent multi-class discrimination
-- Biggest confusion: Depression ↔ Suicidal (clinically meaningful overlap)
-- Personality Disorder has lowest recall due to severe class imbalance (2.0%)
+- Mean AUC-ROC of **0.9365** indicates strong multi-class discrimination
+- Biggest confusion: Depression ↔ Suicidal (548 + 368 misclassifications — clinically meaningful overlap)
+- Personality Disorder and Stress have lowest F1 due to severe class imbalance and ambiguous vocabulary
+- Every TF-IDF design choice (bigrams, sublinear TF, 20k vocab) is justified by ablation results
 
 ---
 
@@ -86,9 +100,10 @@ MIND_BRIDGE/
 │       ├── wordclouds.png
 │       ├── top_words_per_class.png
 │       ├── model_comparison.png
-│       ├── confusion_matrix_logistic_regression.png
+│       ├── cleaning_quality.png
 │       ├── roc_auc_curves.png
 │       ├── ablation_study.png
+│       ├── per_class_f1.png
 │       └── top_features_per_class.png
 │
 ├── app.py                          # Streamlit web application
@@ -104,22 +119,22 @@ MIND_BRIDGE/
 |----------|-------|
 | Source | [Kaggle — Sentiment Analysis for Mental Health](https://www.kaggle.com/datasets/suchintikasarkar/sentiment-analysis-for-mental-health) |
 | Total samples | ~53,000 |
-| After cleaning | ~51,000 |
+| After cleaning | 51,093 |
 | Features | `statement` (text), `status` (label) |
 | Classes | 7 |
 | Split | 70% train / 15% val / 15% test (stratified) |
 
 ### Class Distribution
 
-| Class | Samples | % of Data |
-|-------|---------|-----------|
-| Normal | 16,343 | 31.0% |
-| Depression | 15,404 | 29.2% |
-| Suicidal | 10,652 | 20.2% |
-| Anxiety | 3,841 | 7.3% |
-| Bipolar | 2,777 | 5.3% |
-| Stress | 2,587 | 4.9% |
-| Personality disorder | 1,077 | 2.0% |
+| Class | Samples | % of Data | Avg Words |
+|-------|---------|-----------|-----------|
+| Normal | 16,040 | 31.4% | 17 |
+| Depression | 15,094 | 29.5% | 168 |
+| Suicidal | 10,644 | 20.8% | 147 |
+| Anxiety | 3,623 | 7.1% | 143 |
+| Bipolar | 2,501 | 4.9% | 178 |
+| Stress | 2,296 | 4.5% | 112 |
+| Personality Disorder | 895 | 1.8% | 178 |
 
 ---
 
@@ -129,14 +144,18 @@ MIND_BRIDGE/
 Raw Text
    ↓
 Text Cleaning (lowercase, URLs, punctuation, stopwords, lemmatization)
-   ↓
+   ↓  Average word reduction: 52% (113 → 50 words)
 TF-IDF Vectorization (20k features, unigrams + bigrams, sublinear TF)
+   ↓  Matrix sparsity: 99.75%
+SMOTE Oversampling (training set only → 11,228 samples per class)
    ↓
-Train/Val/Test Split (70/15/15, stratified)
+Train/Val/Test Split (70/15/15, stratified, seed=42)
    ↓
-Model Training (LR, NB, RF, SVM)
+Model Training (LR, NB, RF, SVM — all with balanced class weights)
    ↓
-Evaluation (Accuracy, F1, AUC-ROC, Confusion Matrix)
+Hyperparameter Tuning (3-fold GridSearchCV on C parameter)
+   ↓
+Evaluation (Accuracy, Weighted F1, Macro F1, AUC-ROC, Confusion Matrix)
    ↓
 Best Model: Logistic Regression (C=5.0, class_weight='balanced')
 ```
@@ -148,11 +167,13 @@ Best Model: Logistic Regression (C=5.0, class_weight='balanced')
 A live web application for real-time mental health text classification.
 
 **Features:**
-- Real-time 7-class prediction
-- Confidence scores with visual bars
+- Real-time 7-class prediction with confidence scores
+- Visual confidence bars for all classes
 - Color-coded results per mental health category
 - Crisis resources for high-risk predictions
-- Text statistics panel
+- Prediction history with session tracking
+- Text statistics panel (word count, character count, clean tokens)
+- Export prediction history as CSV
 
 **Run locally:**
 ```bash
@@ -179,7 +200,7 @@ pip install -r requirements.txt
 python3 -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('punkt_tab')"
 
 # 5. Run notebooks in order
-jupyter notebook notebooks/01_EDA.ipynb
+jupyter notebook notebooks/00_Problem_Understanding.ipynb
 
 # 6. Launch web app
 streamlit run app.py
@@ -192,11 +213,12 @@ streamlit run app.py
 | Category | Tools |
 |----------|-------|
 | Language | Python 3.13 |
-| ML | scikit-learn, imbalanced-learn |
+| ML | scikit-learn, imbalanced-learn (SMOTE) |
 | NLP | NLTK, TF-IDF |
 | Visualization | matplotlib, seaborn, wordcloud |
 | Web App | Streamlit |
 | Data | pandas, numpy, scipy |
+| Serialization | joblib |
 | Version Control | Git, GitHub |
 
 ---
@@ -205,8 +227,8 @@ streamlit run app.py
 
 This project is accompanied by a research paper:
 
-**MindBridge: Mental Health Text Classification Using TF-IDF and Machine Learning**
-Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
+**MindBridge: Multi-Class Mental Health Text Classification Using Classical Machine Learning**
+Vaibhav Patel · Siddharth Jadhav
 
 ---
 
@@ -214,8 +236,8 @@ Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
 
 | Name | Student ID | Contributions |
 |------|-----------|---------------|
-| Vaibhav Hasmukh Bhai Patel | U01130755 | Conceptualization, Methodology, Software, Visualization, Writing |
-| Siddharth Sunil Jadhav | U01108649 | Data Curation, Preprocessing, Validation, Writing — Review |
+| Vaibhav Patel | U01130755 | Conceptualization, Methodology, Software, Visualization, Writing |
+| Siddharth Jadhav | U01108649 | Data Curation, Preprocessing, Validation, Writing — Review |
 
 ---
 
