@@ -3,21 +3,9 @@
 <img src="https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/Scikit--Learn-1.3-orange?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
 <img src="https://img.shields.io/badge/Streamlit-1.56-red?style=for-the-badge&logo=streamlit&logoColor=white"/>
-<<<<<<< HEAD
 <img src="https://img.shields.io/badge/Best%20Accuracy-72.21%25-brightgreen?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Best%20Weighted%20F1-72.09%25-brightgreen?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Best%20AUC--ROC-0.9364-brightgreen?style=for-the-badge"/>
-=======
-<<<<<<< HEAD
-<img src="https://img.shields.io/badge/Accuracy-73.55%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/F1%20Score-73.45%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/AUC--ROC-0.9365-brightgreen?style=for-the-badge"/>
-=======
-<img src="https://img.shields.io/badge/Best%20Accuracy-72.21%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Best%20Weighted%20F1-72.09%25-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Best%20AUC--ROC-0.9364-brightgreen?style=for-the-badge"/>
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
 
 ---
@@ -47,54 +35,6 @@ The project focuses on building a lightweight, interpretable system that can sti
 
 ### Model Comparison
 
-<<<<<<< HEAD
-| Model | Accuracy | Weighted F1 | Mean AUC-ROC |
-|-------|----------|-------------|--------------|
-| Naive Bayes | 67.68% | 66.81% | 0.9082 |
-| Random Forest | 69.02% | 66.70% | 0.9218 |
-| **Linear SVM** | **72.21%** | 71.77% | 0.9224 |
-| Logistic Regression | 72.16% | **72.09%** | **0.9364** |
-=======
-<<<<<<< HEAD
-| Model | Accuracy | Weighted F1 | Macro F1 |
-|-------|----------|-------------|----------|
-| Naive Bayes | 67.78% | 67.14% | 55.67% |
-| Random Forest | 69.08% | 66.91% | 52.99% |
-| Linear SVM | 72.61% | 72.25% | 66.66% |
-| **Logistic Regression (ours)** | **73.55%** | **73.45%** | **68.04%** |
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
-
-### Per-Class Performance (Logistic Regression)
-
-| Class | Precision | Recall | F1 Score |
-|-------|-----------|--------|----------|
-| Stress | 0.46 | 0.56 | 0.50 |
-| Personality disorder | 0.58 | 0.51 | 0.54 |
-| Depression | 0.70 | 0.60 | 0.65 |
-| Suicidal | 0.63 | 0.68 | 0.66 |
-| Bipolar | 0.76 | 0.75 | 0.76 |
-| Anxiety | 0.74 | 0.80 | 0.77 |
-| Normal | 0.89 | 0.92 | 0.90 |
-
-### Ablation Study — TF-IDF Configuration
-
-| Configuration | Weighted F1 |
-|--------------|-------------|
-| Unigrams only | 0.7127 |
-| Vocab 10k | 0.7251 |
-| Unigrams + Bigrams | 0.7291 |
-| Sublinear TF | 0.7326 |
-| **Final config (20k)** | **0.7326** |
-
-### Key Findings
-<<<<<<< HEAD
-=======
-- Logistic Regression achieves the best performance across all metrics
-- Mean AUC-ROC of **0.9365** indicates strong multi-class discrimination
-- Biggest confusion: Depression ↔ Suicidal (548 + 368 misclassifications — clinically meaningful overlap)
-- Personality Disorder and Stress have lowest F1 due to severe class imbalance and ambiguous vocabulary
-- Every TF-IDF design choice (bigrams, sublinear TF, 20k vocab) is justified by ablation results
-=======
 | Model | Accuracy | Weighted F1 | Mean AUC-ROC |
 |-------|----------|-------------|--------------|
 | Naive Bayes | 67.68% | 66.81% | 0.9082 |
@@ -125,16 +65,11 @@ The project focuses on building a lightweight, interpretable system that can sti
 | **Final config (20k)** | **0.7326** |
 
 ### Key Findings
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 - Linear SVM gave the highest **accuracy**, while Logistic Regression gave the best **weighted F1** and **AUC-ROC**.
 - The strongest overall ROC performance came from Logistic Regression with a mean AUC of **0.9364**.
 - The most difficult classes are still **Stress** and **Personality disorder**, mainly because of class imbalance and overlap in language.
 - **Normal**, **Anxiety**, and **Bipolar** are learned much more clearly by the model.
 - TF-IDF design choices such as bigrams, sublinear TF scaling, and a larger vocabulary all improved performance.
-<<<<<<< HEAD
-=======
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 
 ---
 
@@ -168,25 +103,11 @@ MIND_BRIDGE/
 │       ├── top_words_per_class.png
 │       ├── wordclouds.png
 │       ├── avg_words_per_class.png
-<<<<<<< HEAD
-=======
-│       ├── cleaning_quality.png
-│       ├── model_comparison.png
-<<<<<<< HEAD
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 │       ├── cleaning_quality.png
 │       ├── model_comparison.png
 │       ├── ablation_study.png
 │       ├── per_class_f1.png
-<<<<<<< HEAD
 │       ├── roc_auc_curves.png
-=======
-=======
-│       ├── ablation_study.png
-│       ├── per_class_f1.png
-│       ├── roc_auc_curves.png
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 │       └── top_features_per_class.png
 │
 ├── app.py
@@ -217,15 +138,7 @@ MIND_BRIDGE/
 | Anxiety | 3,623 | 7.1% | 143 |
 | Bipolar | 2,501 | 4.9% | 178 |
 | Stress | 2,296 | 4.5% | 112 |
-<<<<<<< HEAD
 | Personality disorder | 895 | 1.8% | 178 |
-=======
-<<<<<<< HEAD
-| Personality Disorder | 895 | 1.8% | 178 |
-=======
-| Personality disorder | 895 | 1.8% | 178 |
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 
 ---
 
@@ -235,34 +148,15 @@ MIND_BRIDGE/
 Raw Text
    ↓
 Text Cleaning (lowercase, URLs, punctuation, stopwords, lemmatization)
-<<<<<<< HEAD
    ↓   Average word reduction: 50.6% to 58.2% depending on class
-=======
-<<<<<<< HEAD
-   ↓  Average word reduction: 52% (113 → 50 words)
-=======
-   ↓   Average word reduction: 50.6% to 58.2% depending on class
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 TF-IDF Vectorization (20k features, unigrams + bigrams, sublinear TF)
    ↓
 Train/Val/Test Split (70/15/15, stratified)
    ↓
 Model Training (LR, NB, RF, SVM)
    ↓
-<<<<<<< HEAD
 Evaluation (Accuracy, Weighted F1, AUC-ROC, Confusion Matrix, ROC Curves)
    ↓
-=======
-<<<<<<< HEAD
-Hyperparameter Tuning (3-fold GridSearchCV on C parameter)
-   ↓
-Evaluation (Accuracy, Weighted F1, Macro F1, AUC-ROC, Confusion Matrix)
-=======
-Evaluation (Accuracy, Weighted F1, AUC-ROC, Confusion Matrix, ROC Curves)
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
-   ↓
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 Feature Analysis (top words, word clouds, top TF-IDF features)
 ```
 
@@ -392,18 +286,8 @@ streamlit run app.py
 
 This project is accompanied by a research paper:
 
-<<<<<<< HEAD
 **MindBridge: Mental Health Text Classification Using TF-IDF and Machine Learning**  
 Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
-=======
-<<<<<<< HEAD
-**MindBridge: Multi-Class Mental Health Text Classification Using Classical Machine Learning**
-Vaibhav Patel · Siddharth Jadhav
-=======
-**MindBridge: Mental Health Text Classification Using TF-IDF and Machine Learning**  
-Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
->>>>>>> 6e396c8 (Initial commit: MindBridge ML pipeline)
->>>>>>> 16dbbec (Initial commit: MindBridge ML pipeline)
 
 ---
 
