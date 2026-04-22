@@ -1,6 +1,22 @@
-venv/
-__pycache__/
-.DS_Store
+# Data
+data/
+*.csv
+
+# Models
 *.pkl
-data/*.csv
+*.npz
+
+# Plots
+results/
+notebooks/results/
+*.png
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
 .ipynb_checkpoints/
+
+# VS Code
+.vscode/
