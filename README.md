@@ -295,7 +295,7 @@ Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
 
 | Name | Student ID | Contributions |
 |------|-----------|---------------|
-| Vaibhav Hasmukh Bhai Patel | U01130755 | Conceptualization, Methodology, Software, Visualization, Writing |
+| Vaibhav HasmukhBhai Patel | U01130755 | Conceptualization, Methodology, Software, Visualization, Writing |
 | Siddharth Sunil Jadhav | U01108649 | Data Curation, Preprocessing, Validation, Writing — Review |
 
 ---
