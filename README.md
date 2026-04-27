@@ -169,57 +169,57 @@ Below are the result plots used in the project. Each one is included with its fi
 ### 1. Mental Health Class Distribution  
 **File:** `results/plots/class_distribution.png`
 
-![Mental Health Class Distribution](results/plots/class_distribution.png)
+![Mental Health Class Distribution](notebooks/results/plots/class_distribution.png)
 
 ### 2. Text Length Distribution  
 **File:** `results/plots/text_length.png`
 
-![Text Length Distribution](results/plots/text_length.png)
+![Text Length Distribution](notebooks/results/plots/text_length.png)
 
 ### 3. Top 15 Most Frequent Words per Class  
 **File:** `results/plots/top_words_per_class.png`
 
-![Top Words per Class](results/plots/top_words_per_class.png)
+![Top Words per Class](notebooks/results/plots/top_words_per_class.png)
 
 ### 4. Word Clouds by Mental Health Category  
 **File:** `results/plots/wordclouds.png`
 
-![Word Clouds by Category](results/plots/wordclouds.png)
+![Word Clouds by Category](notebooks/results/plots/wordclouds.png)
 
 ### 5. Average Word Count per Class  
 **File:** `results/plots/avg_words_per_class.png`
 
-![Average Word Count per Class](results/plots/avg_words_per_class.png)
+![Average Word Count per Class](notebooks/results/plots/avg_words_per_class.png)
 
 ### 6. Text Cleaning Quality Check  
 **File:** `results/plots/cleaning_quality.png`
 
-![Text Cleaning Quality Check](results/plots/cleaning_quality.png)
+![Text Cleaning Quality Check](notebooks/results/plots/cleaning_quality.png)
 
 ### 7. Model Comparison  
 **File:** `results/plots/model_comparison.png`
 
-![Model Comparison](results/plots/model_comparison.png)
+![Model Comparison](notebooks/results/plots/model_comparison.png)
 
 ### 8. Ablation Study (TF-IDF Configuration)  
 **File:** `results/plots/ablation_study.png`
 
-![Ablation Study](results/plots/ablation_study.png)
+![Ablation Study](notebooks/results/plots/ablation_study.png)
 
 ### 9. Per-Class Precision, Recall, and F1 Score  
 **File:** `results/plots/per_class_f1.png`
 
-![Per-Class Precision Recall and F1](results/plots/per_class_f1.png)
+![Per-Class Precision Recall and F1](notebooks/results/plots/per_class_f1.png)
 
 ### 10. ROC-AUC Curves by Model  
 **File:** `results/plots/roc_auc_curves.png`
 
-![ROC-AUC Curves by Model](results/plots/roc_auc_curves.png)
+![ROC-AUC Curves by Model](notebooks/results/plots/roc_auc_curves.png)
 
 ### 11. Top 20 TF-IDF Features per Class (Logistic Regression)  
 **File:** `results/plots/top_features_per_class.png`
 
-![Top TF-IDF Features per Class](results/plots/top_features_per_class.png)
+![Top TF-IDF Features per Class](notebooks/results/plots/top_features_per_class.png)
 
 ---
 
