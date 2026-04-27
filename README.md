@@ -214,7 +214,7 @@ Below are the result plots used in the project. Each one is included with its fi
 ### 10. ROC-AUC Curves by Model  
 **File:** `results/plots/roc_auc_curves.png`
 
-![ROC-AUC Curves by Model]
+![ROC-AUC Curves by Model](notebooks/results/plots/roc_auc_curves.png)
 
 ### 11. Top 20 TF-IDF Features per Class (Logistic Regression)  
 **File:** `results/plots/top_features_per_class.png`
