@@ -15,7 +15,7 @@
 
 *Classifying mental health status from social media text using TF-IDF and classical ML*
 
-[Live Demo](#streamlit-app) · [Paper](#paper) · [Results](#results) · [Plots](#plots-and-visual-results) · [Setup](#setup)
+[Live Demo](#streamlit-app) · [Paper](MindBridge_Final_Paper.pdf) · [Results](#results) · [Plots](#plots-and-visual-results) · [Setup](#setup)
 
 </div>
 
@@ -288,7 +288,6 @@ This project is accompanied by a research paper:
 
 **MindBridge: Mental Health Text Classification Using TF-IDF and Machine Learning**  
 Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
-MindBridge_Final_Paper.pdf
 
 ---
 
