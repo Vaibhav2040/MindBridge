@@ -288,6 +288,7 @@ This project is accompanied by a research paper:
 
 **MindBridge: Mental Health Text Classification Using TF-IDF and Machine Learning**  
 Vaibhav Hasmukh Bhai Patel · Siddharth Sunil Jadhav
+MindBridge_Final_Paper.pdf
 
 ---
 
